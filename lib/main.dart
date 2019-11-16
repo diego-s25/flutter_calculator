@@ -25,12 +25,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String output = "0";
+
+  onButtonPressed(String buttonText) {}
+
   Widget buildButton(String buttonText) {
     return new Expanded(
       child: new OutlineButton(
         padding: new EdgeInsets.all(24.0),
-        child: new Text(buttonText),
-        onPressed: () => {},
+        child: new Text(
+          buttonText,
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        ),
+        onPressed: () => onButtonPressed(buttonText),
       ),
     );
   }
@@ -43,7 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: new Container(
           child: new Column(children: <Widget>[
-            new Container(child: new Text("Result")),
+            new Container(
+                alignment: Alignment.centerRight,
+                padding:
+                    new EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
+                child: new Text(
+                  output,
+                  style: new TextStyle(
+                      fontSize: 48.0, fontWeight: FontWeight.bold),
+                )),
             new Expanded(
               child: new Divider(),
             ),
