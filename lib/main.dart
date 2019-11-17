@@ -27,7 +27,60 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String output = "0";
 
-  onButtonPressed(String buttonText) {}
+  double num1 = 0.0;
+  double num2 = 0.0;
+  String tempOutput = "0";
+  String operand = "";
+
+  onButtonPressed(String buttonText) {
+    if (buttonText == "CLEAR") {
+      tempOutput = "0";
+      num1 = 0.0;
+      num2 = 0.0;
+      operand = "";
+    } else if (buttonText == "+" ||
+        buttonText == "-" ||
+        buttonText == "/" ||
+        buttonText == "X") {
+      num1 = double.parse(output);
+      operand = buttonText;
+      tempOutput = "0";
+    } else if (buttonText == ".") {
+      if (tempOutput.contains(".")) {
+        print("Already contains a decimal");
+        return;
+      } else {
+        tempOutput = tempOutput + buttonText;
+      }
+    } else if (buttonText == "=") {
+      num2 = double.parse(output);
+
+      if (operand == "+") {
+        tempOutput = (num1 + num2).toString();
+      }
+      if (operand == "-") {
+        tempOutput = (num1 - num2).toString();
+      }
+      if (operand == "X") {
+        tempOutput = (num1 * num2).toString();
+      }
+      if (operand == "/") {
+        tempOutput = (num1 / num2).toString();
+      }
+
+      num1 = 0.0;
+      num2 = 0.0;
+      operand = "";
+    } else {
+      tempOutput = tempOutput + buttonText;
+    }
+
+    print(tempOutput);
+
+    setState(() {
+      output = double.parse(tempOutput).toStringAsFixed(2);
+    });
+  }
 
   Widget buildButton(String buttonText) {
     return new Expanded(
