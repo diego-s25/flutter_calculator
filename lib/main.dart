@@ -27,9 +27,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String output = "0";
 
-  String tempOutput = "0";
   double num1 = 0.0;
   double num2 = 0.0;
+  String tempOutput = "0";
   String operand = "";
 
   onButtonPressed(String buttonText) {
