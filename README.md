@@ -11,3 +11,11 @@ git clone https://github.com/diego-s25/flutter_calculator.git
 cd /path to cloned dir/
 flutter run
 ```
+
+## Troubleshooting
+
+Run:
+
+```
+flutter doctor
+```
